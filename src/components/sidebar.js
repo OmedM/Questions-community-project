@@ -9,6 +9,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
 import { upperSidebarItems, lowerSidebarItems } from '../components/sidebar-items.js'
+import { Link } from 'react-router-dom';
+import { Container } from '@mui/system';
 
 function Sidebar() {
     return(
@@ -31,12 +33,14 @@ function Sidebar() {
             <List>
             {upperSidebarItems.map((value, key) => (
                 <ListItem key={value.id} disablePadding>
-                <ListItemButton>
-                    <ListItemIcon sx={{color: '#fff'}}>
-                    {value.icon}
-                    </ListItemIcon>
-                    <ListItemText primary={value.label} />
-                </ListItemButton>
+                    <Link to={value.route} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ListItemButton>
+                            <ListItemIcon sx={{color: '#fff'}}>
+                                {value.icon}
+                            </ListItemIcon>
+                            <ListItemText primary={value.label} />
+                        </ListItemButton>
+                    </Link>
                 </ListItem>
             ))}
             </List>
@@ -54,15 +58,21 @@ function Sidebar() {
             ))}
             </List>
             <Divider sx={{backgroundColor: '#fff'}}/>
+            <Container
+                sx={{
+                    marginTop: 2,
+                }}
+            >
+            <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
             <Button
                 color='error'
                 variant='outlined'
-                sx={{
-                    margin: 2
-                }}
+                fullWidth={true}
             >
                 Logout
             </Button>
+            </Link>
+            </Container>
         </Drawer>
     )
 }

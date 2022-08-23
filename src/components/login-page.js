@@ -31,6 +31,7 @@ function LoginPage() {
                     <Button
                         variant='contained'
                         size='large'
+                        fullWidth={true}
                     >
                         Login
                     </Button>

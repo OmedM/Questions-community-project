@@ -9,19 +9,19 @@ const upperSidebarItems = [
         id: 0,
         label: 'User',
         icon: <PersonIcon />,
-        route: 'route'
+        route: '/main/user'
     },
     {
         id: 1,
         label: 'Questions',
         icon: <QuestionAnswerIcon />,
-        route: 'route'
+        route: '/main/questions'
     },
     {
         id: 2,
         label: 'Ask a Question',
         icon: <LiveHelpIcon />,
-        route: 'route'
+        route: '/main/user/ask-question'
     },
 ]
 
