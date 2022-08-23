@@ -9,12 +9,17 @@ import LoginPage from './components/login-page.js';
 import ErrorPage from './components/error-page.js';
 import UserPage from './components/user-page.js';
 import Sidebar from './components/sidebar.js';
+import QuestionPage from './components/questions-page.js';
 
 function App() {
   return (
       <Routes>
         <Route path='/' element={<LoginPage />}/>
-        <Route path='/main/*' element={<MainPage />}/>
+        <Route path='main' element={<MainPage />}>
+          <Route path='user' element={<UserPage />}/>
+          <Route path='questions' element={<QuestionPage />}/>
+          <Route path='ask-question' element={<MainPage />}/>
+        </Route>
       </Routes>
   )
 };

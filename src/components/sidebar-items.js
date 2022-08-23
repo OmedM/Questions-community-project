@@ -3,6 +3,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import PeopleIcon from '@mui/icons-material/People';
 import SmsIcon from '@mui/icons-material/Sms';
+import CategoryIcon from '@mui/icons-material/Category';
 
 const upperSidebarItems = [
     {
@@ -34,8 +35,8 @@ const lowerSidebarItems = [
     },
     {
         id: 1,
-        label: 'Answers',
-        icon: <SmsIcon />,
+        label: 'Categories',
+        icon: <CategoryIcon />,
         route: 'route'
     },
 ]
