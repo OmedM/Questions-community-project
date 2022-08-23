@@ -1,0 +1,43 @@
+import { Link } from 'react-router-dom';
+import Container from "@mui/material/Container";
+import LoginIcon from '@mui/icons-material/Login';
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+
+function LoginPage() {
+    return (
+        <Container
+            maxWidth='xs'
+            sx={{
+                height: '100vh',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column',
+            }}
+        >
+            <LoginIcon fontSize="large" sx={{ marginBottom: 3 }}/>
+            <TextField id="outlined-basic" label="Username" variant="outlined" margin="dense" />
+            <TextField id="outlined-basic" label="Password" variant="outlined" margin="dense" />
+            <Container
+                sx={{
+                    margin: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}
+            >
+                <Link to='/main' style={{ textDecoration: 'none' }}>
+                    <Button
+                        variant='contained'
+                        size='large'
+                    >
+                        Login
+                    </Button>
+                </Link>
+            </Container>
+        </Container>
+    )
+}
+
+export default LoginPage;
