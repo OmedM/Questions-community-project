@@ -37,12 +37,13 @@ function Ask() {
                     Category
                 </InputLabel>
                 <NativeSelect
-                    defaultValue={"Select a Category"}
+                    defaultValue={100}
                     inputProps={{
                     name: 'age',
                     id: 'uncontrolled-native',
                     }}
                 >
+                    <option disabled value={100}>Select a category</option>
                     {
                         categories.map(
                             (category) => {

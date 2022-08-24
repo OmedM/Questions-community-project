@@ -31,7 +31,7 @@ const lowerSidebarItems = [
         id: 0,
         label: 'All users',
         icon: <PeopleIcon />,
-        route: 'route'
+        route: '/main/admin-users'
     },
     {
         id: 1,
