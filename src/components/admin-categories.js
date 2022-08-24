@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import { ButtonGroup } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
+import AddIcon from '@mui/icons-material/Add';
 
 function AdminCategories() {
     return (
@@ -28,10 +29,26 @@ function AdminCategories() {
                     marginBottom: 5
                 }}
             >
-                Question Form
+                Categories
             </Typography>
-            <TextField id="outlined-basic" label="Title" variant="outlined" fullWidth margin='normal'/>
-            <TextField multiline={true} rows='8' id="outlined-basic" label="Question" variant="outlined" fullWidth margin='normal'/>
+            <TextField id="outlined-basic" label="New category" variant="outlined" fullWidth margin='normal'/>
+            <Button
+                    variant='contained'
+                    size='large'
+                    fullWidth={true}
+                    margin="normal"
+                    startIcon={<AddIcon />}
+                >
+                    Add
+                </Button>
+                <Typography
+                variant='h4'
+                sx={{
+                    marginTop: 5
+                }}
+            >
+                Delete Category
+            </Typography>
             <FormControl fullWidth margin='normal'>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native">
                     Category
@@ -43,6 +60,7 @@ function AdminCategories() {
                     id: 'uncontrolled-native',
                     }}
                 >
+                    <option selected>Select a category</option>
                     {
                         categories.map(
                             (category) => {
@@ -52,32 +70,16 @@ function AdminCategories() {
                     }
                 </NativeSelect>
             </FormControl>
-            <ButtonGroup 
-                fullWidth
-                sx={{
-                    marginTop: 2
-                }}
-            >
                 <Button
                     variant='outlined'
-                    color='secondary'
+                    color='error'
                     size='large'
                     fullWidth={true}
                     margin="normal"
                     startIcon={<DeleteIcon />}
                 >
-                    Discard
+                    Delete
                 </Button>
-                <Button
-                    variant='contained'
-                    size='large'
-                    fullWidth={true}
-                    margin="normal"
-                    startIcon={<DoneIcon />}
-                >
-                    Finish
-                </Button>
-            </ButtonGroup>
         </Box>
     )
 }

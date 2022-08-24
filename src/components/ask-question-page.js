@@ -60,7 +60,7 @@ function Ask() {
             >
                 <Button
                     variant='outlined'
-                    color='secondary'
+                    color='error'
                     size='large'
                     fullWidth={true}
                     margin="normal"
