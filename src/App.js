@@ -8,8 +8,9 @@ import MainPage from './components/main-page';
 import LoginPage from './components/login-page.js';
 import ErrorPage from './components/error-page.js';
 import UserPage from './components/user-page.js';
-import Sidebar from './components/sidebar.js';
 import QuestionPage from './components/questions-page.js';
+import Ask from './components/ask-question-page.js';
+import AdminCategories from './components/admin-categories';
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
         <Route path='main' element={<MainPage />}>
           <Route path='user' element={<UserPage />}/>
           <Route path='questions' element={<QuestionPage />}/>
-          <Route path='ask-question' element={<MainPage />}/>
+          <Route path='ask-question' element={<Ask />}/>
+          <Route path='admin-categories' element={<AdminCategories />}/>
         </Route>
+        <Route path='*' element={<ErrorPage />}/>
       </Routes>
   )
 };

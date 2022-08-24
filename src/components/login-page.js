@@ -21,10 +21,10 @@ function LoginPage() {
             <TextField id="outlined-basic" label="Password" variant="outlined" margin="dense" />
             <Container
                 sx={{
-                    margin: 2,
+                    marginTop: 2,
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                 }}
             >
                 <Link to='/main' style={{ textDecoration: 'none' }}>

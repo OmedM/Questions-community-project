@@ -48,12 +48,14 @@ function Sidebar() {
             <List>
             {lowerSidebarItems.map((value, key) => (
                 <ListItem key={value.id} disablePadding>
-                <ListItemButton>
-                    <ListItemIcon sx={{color: '#fff'}}>
-                    {value.icon}
-                    </ListItemIcon>
-                    <ListItemText primary={value.label} />
-                </ListItemButton>
+                    <Link to={value.route} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <ListItemButton>
+                            <ListItemIcon sx={{color: '#fff'}}>
+                                {value.icon}
+                            </ListItemIcon>
+                            <ListItemText primary={value.label} />
+                        </ListItemButton>
+                    </Link>
                 </ListItem>
             ))}
             </List>

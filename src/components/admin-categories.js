@@ -10,7 +10,7 @@ import { ButtonGroup } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 
-function Ask() {
+function AdminCategories() {
     return (
         <Box
             sx={{
@@ -82,4 +82,4 @@ function Ask() {
     )
 }
 
-export default Ask;
+export default AdminCategories;

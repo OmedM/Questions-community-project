@@ -54,9 +54,9 @@ export default function BasicTabs() {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered variant='fullWidth'>
           {
             categories.map(
-              (category) => {
+              (category, key) => {
                 return (
-                  <Tab label={category.label} {...a11yProps(category.id)}/>
+                  <Tab label={category.label} {...a11yProps(category.id)} key={key}/>
                 )
               }
             )
@@ -65,27 +65,19 @@ export default function BasicTabs() {
       </Box>
       {
         categories.map(
-          (category) => {
+          (category, key) => {
             return (
-              <TabPanel value={value} index={category.id} key={category.id}>
-                {
-                  <Typography
-                    variant='h4'
-                  >
-                    {category.label}
-                  </Typography>
-                }
+              <TabPanel value={value} index={category.id} key={key}>
+                <Typography
+                  variant='h4'
+                >
+                  { category.label }
+                </Typography>
               </TabPanel>
             )
           }
         )
       }
-      <OutlinedCard />
-      <OutlinedCard />
-      <OutlinedCard />
-      <OutlinedCard />
-      <OutlinedCard />
-      <OutlinedCard />
     </Box>
   );
 }

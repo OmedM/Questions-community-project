@@ -22,7 +22,7 @@ const upperSidebarItems = [
         id: 2,
         label: 'Ask a Question',
         icon: <LiveHelpIcon />,
-        route: '/main/user/ask-question'
+        route: '/main/ask-question'
     },
 ]
 
@@ -37,7 +37,7 @@ const lowerSidebarItems = [
         id: 1,
         label: 'Categories',
         icon: <CategoryIcon />,
-        route: 'route'
+        route: '/main/admin-categories'
     },
 ]
 

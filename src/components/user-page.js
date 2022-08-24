@@ -9,6 +9,9 @@ import { Typography } from '@mui/material';
     <Typography
         variant='h4'
         align='center'
+        sx={{
+          marginTop: 3
+        }}
     >
         User page
     </Typography>
