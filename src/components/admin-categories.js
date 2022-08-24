@@ -54,13 +54,13 @@ function AdminCategories() {
                     Category
                 </InputLabel>
                 <NativeSelect
-                    defaultValue={"Select a Category"}
+                    defaultValue={1}
                     inputProps={{
                     name: 'age',
                     id: 'uncontrolled-native',
                     }}
                 >
-                    <option selected>Select a category</option>
+                    <option disabled value={1}>Select a category</option>
                     {
                         categories.map(
                             (category) => {
