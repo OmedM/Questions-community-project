@@ -6,7 +6,6 @@ import NativeSelect from '@mui/material/NativeSelect';
 import TextField from '@mui/material/TextField';
 import { categories } from './question-categories.js';
 import Button from '@mui/material/Button';
-import { ButtonGroup } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import AddIcon from '@mui/icons-material/Add';
@@ -15,8 +14,8 @@ function AdminCategories() {
     return (
         <Box
             sx={{
-                width: '40%',
-                padding: '5% 30%',
+                width: '60%',
+                padding: '5% 20%',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -31,7 +30,8 @@ function AdminCategories() {
             >
                 Categories
             </Typography>
-            <TextField id="outlined-basic" label="New category" variant="outlined" fullWidth margin='normal'/>
+            <TextField id="outlined-basic" label="Category name" variant="outlined" fullWidth margin='normal'/>
+            <TextField id="outlined-basic" label="Category description" variant="outlined" fullWidth margin='normal'/>
             <Button
                     variant='contained'
                     size='large'

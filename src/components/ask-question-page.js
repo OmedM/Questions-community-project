@@ -14,12 +14,12 @@ function Ask() {
     return (
         <Box
             sx={{
-                width: '40%',
-                padding: '5% 30%',
+                width: '60%',
+                padding: '5% 20%',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center'  
             }}
         >
             <Typography

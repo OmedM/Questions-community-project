@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -11,6 +10,7 @@ import Button from '@mui/material/Button';
 import { upperSidebarItems, lowerSidebarItems } from '../components/sidebar-items.js'
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/system';
+import Typography from '@mui/material/Typography';
 
 function Sidebar() {
     return(
@@ -28,8 +28,19 @@ function Sidebar() {
             variant="permanent"
             anchor="left"
         >
-            <Toolbar />
-            <Divider sx={{backgroundColor: '#fff'}}/>
+            <Container
+                sx={{
+                    padding: 1.5,
+                }}
+            >
+                <Typography
+                    variant='h3'
+                    align='center'
+                >
+                    QCP
+                </Typography>
+            </Container>
+            <Divider variant="middle" sx={{backgroundColor: '#fff'}}/>
             <List>
             {upperSidebarItems.map((value, key) => (
                 <ListItem key={value.id} disablePadding>
@@ -44,7 +55,7 @@ function Sidebar() {
                 </ListItem>
             ))}
             </List>
-            <Divider sx={{backgroundColor: '#fff'}}/>
+            <Divider variant="middle" sx={{backgroundColor: '#fff'}}/>
             <List>
             {lowerSidebarItems.map((value, key) => (
                 <ListItem key={value.id} disablePadding>
@@ -59,7 +70,7 @@ function Sidebar() {
                 </ListItem>
             ))}
             </List>
-            <Divider sx={{backgroundColor: '#fff'}}/>
+            <Divider variant="middle" sx={{backgroundColor: '#fff'}}/>
             <Container
                 sx={{
                     marginTop: 2,
