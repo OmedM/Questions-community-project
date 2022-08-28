@@ -5,7 +5,6 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { categories } from './question-categories.js';
-import createTypography from '@mui/material/styles/createTypography';
 import OutlinedCard from './question-card.js';
 
 function TabPanel(props) {
@@ -68,11 +67,6 @@ export default function BasicTabs() {
           (category, key) => {
             return (
               <TabPanel value={value} index={category.id} key={key}>
-                <Typography
-                  variant='h4'
-                >
-                  { category.label }
-                </Typography>
               </TabPanel>
             )
           }

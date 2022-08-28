@@ -4,7 +4,7 @@ import axios from 'axios';
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        user: ""
+        users: []
     },
     reducers: {
         addUser(state, action) {
@@ -18,6 +18,9 @@ const userSlice = createSlice({
                 "password": "aaabbb12345",
                 "email": "ab@example.com"
             }).catch(() => { alert('Some thing goes wrong!') })
+        },
+        adminUsersList(state, action) {
+            state.users = action.payload
         }
     }
 });

@@ -9,8 +9,12 @@ import Button from '@mui/material/Button';
 import { ButtonGroup } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
+import { useSelector } from 'react-redux';
 
 function Ask() {
+
+    const categories = useSelector((state) => state.categories.categories);
+
     return (
         <Box
             sx={{
@@ -47,7 +51,7 @@ function Ask() {
                     {
                         categories.map(
                             (category) => {
-                                return <option value={category.id}>{category.label}</option>
+                                return <option key={category.id} value={category.id}>{category.name}</option>
                             }
                         )
                     }

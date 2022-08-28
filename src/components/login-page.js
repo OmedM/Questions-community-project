@@ -61,9 +61,11 @@ function LoginPage() {
                     [TEST] Login as
                 </Typography>
                 <ButtonGroup variant='outlined' color='primary'>
+                    <Link to='/main' style={{ textDecoration: 'none' }}>
                     <Button onClick={testAdminLogin}>
                         Admin
                     </Button>
+                    </Link>
                     <Button>
                         Responder
                     </Button>

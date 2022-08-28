@@ -6,7 +6,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Button from '@mui/material/Button';
 import { upperSidebarItems, lowerSidebarItems } from '../components/sidebar-items.js'
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/system';
@@ -30,19 +29,19 @@ function Sidebar() {
         >
             <Container
                 sx={{
-                    padding: 1.5,
+                    padding: 1.35,
                 }}
             >
                 <Typography
-                    variant='h3'
+                    variant='h4'
                     align='center'
                 >
                     QCP
                 </Typography>
             </Container>
-            <Divider variant="middle" sx={{backgroundColor: '#fff'}}/>
+            <Divider sx={{backgroundColor: '#fff'}}/>
             <List>
-            {upperSidebarItems.map((value, key) => (
+            {upperSidebarItems.map((value) => (
                 <ListItem key={value.id} disablePadding>
                     <Link to={value.route} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <ListItemButton>
@@ -57,35 +56,19 @@ function Sidebar() {
             </List>
             <Divider variant="middle" sx={{backgroundColor: '#fff'}}/>
             <List>
-            {lowerSidebarItems.map((value, key) => (
-                <ListItem key={value.id} disablePadding>
-                    <Link to={value.route} style={{ textDecoration: 'none', color: 'inherit' }}>
-                        <ListItemButton>
-                            <ListItemIcon sx={{color: '#fff'}}>
-                                {value.icon}
-                            </ListItemIcon>
-                            <ListItemText primary={value.label} />
-                        </ListItemButton>
-                    </Link>
-                </ListItem>
-            ))}
+                {lowerSidebarItems.map((value, key) => (
+                    <ListItem key={value.id} disablePadding>
+                        <Link to={value.route} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <ListItemButton>
+                                <ListItemIcon sx={{color: '#fff'}}>
+                                    {value.icon}
+                                </ListItemIcon>
+                                <ListItemText primary={value.label} />
+                            </ListItemButton>
+                        </Link>
+                    </ListItem>
+                ))}
             </List>
-            <Divider variant="middle" sx={{backgroundColor: '#fff'}}/>
-            <Container
-                sx={{
-                    marginTop: 2,
-                }}
-            >
-            <Link to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
-            <Button
-                color='error'
-                variant='outlined'
-                fullWidth={true}
-            >
-                Logout
-            </Button>
-            </Link>
-            </Container>
         </Drawer>
     )
 }

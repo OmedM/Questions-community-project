@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
@@ -7,11 +8,32 @@ import TextField from '@mui/material/TextField';
 import { categories } from './question-categories.js';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import DoneIcon from '@mui/icons-material/Done';
 import AddIcon from '@mui/icons-material/Add';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import { categoriesActions } from '../redux/categories-slice.js';
+import { getCategories } from '../API/api.js';
+import { useSelector } from 'react-redux';
 
 function AdminCategories() {
+     const [categories, setCategories] = React.useState();
+
+    const dispatch = useDispatch();
+
+    const category = useSelector((state) => state.categories.categories);
+
+    const refresh = async () => {
+        try {
+        const res =  await axios.get(getCategories)
+            setCategories(res.data.categories)
+            dispatch(categoriesActions.adminUsersList(res.data.categories));
+        }
+        catch (errors) {
+        alert('Something went wrong!')
+        }
+    }
     return (
+        
         <Box
             sx={{
                 width: '60%',
@@ -62,9 +84,9 @@ function AdminCategories() {
                 >
                     <option disabled value={100}>Select a category</option>
                     {
-                        categories.map(
+                        category.map(
                             (category) => {
-                                return <option value={category.id}>{category.label}</option>
+                                return <option key={category.id} value={category.id}>{category.name}</option>
                             }
                         )
                     }
@@ -80,6 +102,7 @@ function AdminCategories() {
                 >
                     Delete
                 </Button>
+                <Button onClick={refresh}>Refresh</Button>
         </Box>
     )
 }
