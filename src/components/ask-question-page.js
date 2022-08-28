@@ -4,7 +4,6 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import NativeSelect from '@mui/material/NativeSelect';
 import TextField from '@mui/material/TextField';
-import { categories } from './question-categories.js';
 import Button from '@mui/material/Button';
 import { ButtonGroup } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';

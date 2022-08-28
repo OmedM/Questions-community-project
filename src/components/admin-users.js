@@ -56,6 +56,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
             <TableCell align="left">#</TableCell>
             <TableCell>Username</TableCell>
             <TableCell>Role</TableCell>
+            <TableCell>E-mail</TableCell>
             <TableCell align='right'>Delete user</TableCell>
           </TableRow>
         </TableHead>
@@ -68,6 +69,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
               <TableCell align="left">{row.id}</TableCell>
               <TableCell>{row.displayName}</TableCell>
               <TableCell>{row.role}</TableCell>
+              <TableCell>{row.email}</TableCell>
               <TableCell align='right'>
                 <Button color='error'>
                   <DeleteIcon color='error' />

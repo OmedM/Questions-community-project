@@ -5,7 +5,6 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import NativeSelect from '@mui/material/NativeSelect';
 import TextField from '@mui/material/TextField';
-import { categories } from './question-categories.js';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -16,7 +15,11 @@ import { getCategories } from '../API/api.js';
 import { useSelector } from 'react-redux';
 
 function AdminCategories() {
-     const [categories, setCategories] = React.useState();
+    const [categories, setCategories] = React.useState();
+    const [newCategory, setNewCategory] = React.useState({
+        categoryName: '',
+        categoryDescription: ''
+    });
 
     const dispatch = useDispatch();
 

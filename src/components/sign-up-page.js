@@ -5,9 +5,12 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Typography } from '@mui/material';
 import NativeSelect from '@mui/material/NativeSelect';
-import { categories } from './question-categories.js'
+import { useSelector } from 'react-redux';
 
 function LoginPage() {
+
+    const roles = useSelector((state) => state.categories.categories)
+
     return (
         <Container
             maxWidth='xs'
@@ -45,9 +48,9 @@ function LoginPage() {
             >
                     <option disabled value={100}>Select a role</option>
                     {
-                        categories.map(
-                            (category, key) => {
-                                return <option value={category.id} key={key}>{category.label}</option>
+                        roles.map(
+                            (category) => {
+                                return <option value={category.id} key={category.id}>{category.label}</option>
                             }
                         )
                     }

@@ -10,6 +10,7 @@ import { upperSidebarItems, lowerSidebarItems } from '../components/sidebar-item
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/system';
 import Typography from '@mui/material/Typography';
+import { Button } from '@mui/material';
 
 function Sidebar() {
     return(
@@ -69,6 +70,21 @@ function Sidebar() {
                     </ListItem>
                 ))}
             </List>
+            <Container
+                sx={{
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    justifyContent: 'center',
+                    paddingBottom: 1
+                }}
+            >
+                <Typography
+                    fontSize='8pt'
+                >
+                    Omed Muhammed | 2022 | ⓒ | <a href='https://github.com/OmedM/Questions-community-project' target='_blank' style={{ color: 'inherit' }}>Github</a>
+                </Typography>
+            </Container>
         </Drawer>
     )
 }

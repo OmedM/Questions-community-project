@@ -4,8 +4,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { categories } from './question-categories.js';
 import OutlinedCard from './question-card.js';
+import { useSelector } from 'react-redux';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,19 +43,21 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
 
+  const categories = useSelector((state) => state.categories.categories);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', marginTop: 0.5 }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" centered variant='fullWidth'>
+        <Tabs value={value} onChange={handleChange} aria-label="scrollable auto tabs example" scrollButtons="auto" variant='scrollable'>
           {
             categories.map(
-              (category, key) => {
+              (category) => {
                 return (
-                  <Tab label={category.label} {...a11yProps(category.id)} key={key}/>
+                  <Tab label={category.name} {...a11yProps(category.id)} key={category.id}/>
                 )
               }
             )
@@ -64,10 +66,9 @@ export default function BasicTabs() {
       </Box>
       {
         categories.map(
-          (category, key) => {
+          (category) => {
             return (
-              <TabPanel value={value} index={category.id} key={key}>
-              </TabPanel>
+              <TabPanel value={value} index={category.id} key={category.id}></TabPanel>
             )
           }
         )

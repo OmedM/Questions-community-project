@@ -6,10 +6,13 @@ import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 const MainNavBar = () => {
+  const location = useLocation();
+
   return (
     <AppBar
         position="sticky"
@@ -17,7 +20,22 @@ const MainNavBar = () => {
             backgroundColor: '#eee'
         }}
     >
-      <Container maxWidth="xl" disableGutters>
+      <Container maxWidth="xl" disableGutters
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}
+      >
+        <Typography
+          variant='h5'
+          sx={{
+            marginLeft: 3,
+            color: '#000'
+          }}
+        >
+          {location.pathname.charAt(6).toUpperCase() + location.pathname.slice(7)}
+        </Typography>
         <Toolbar 
             disableGutters
             sx={{
