@@ -8,7 +8,9 @@ import OutlinedCard from './question-card.js';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { getCategories } from '../API/api.js';
+import { getQuestions } from '../API/api.js';
 import { categoriesActions } from '../redux/categories-slice.js'
+import { questionActions } from '../redux/question-slice.js';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,26 +52,36 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
-  const [categories, setCategories] = React.useState();
 
   const dispatch = useDispatch();
 
   const category = useSelector((state) => state.categories.categories);
+  const question = useSelector((state) => state.questions.questions);
 
   React.useEffect(() => {
-      refresh();
+    getCategoriesData();
+    getQuestionsData();
   }, [])
 
-  const refresh = async () => {
+  const getCategoriesData = async () => {
       try {
       const res =  await axios.get(getCategories)
-          setCategories(res.data.categories)
           dispatch(categoriesActions.adminUsersList(res.data.categories));
       }
       catch (errors) {
       alert('Something went wrong!')
       }
   }
+
+  const getQuestionsData = async () => {
+    try {
+      const res =  await axios.get(getQuestions)
+          dispatch(questionActions.questions(res.data.questions));
+    }
+    catch (errors) {
+      alert('Something went wrong!')
+    }
+}
 
   return (
     <Box sx={{ width: '100%', marginTop: 0.5 }}>
@@ -90,7 +102,17 @@ export default function BasicTabs() {
         category.map(
           (category) => {
             return (
-              <TabPanel value={value} index={category.id} key={category.id}></TabPanel>
+              <TabPanel value={value} index={category.id} key={category.id}>
+                {
+                  question.map(
+                    (question) => {
+                      return (
+                        <p key={question.id}>{question.id + question.question}</p>
+                      )
+                    }
+                  )
+                }
+              </TabPanel>
             )
           }
         )

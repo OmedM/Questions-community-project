@@ -20,7 +20,7 @@ function Sidebar() {
             '& .MuiDrawer-paper': {
                 width: 250,
                 boxSizing: 'border-box',
-                backgroundColor: '#222a43',
+                backgroundColor: '#293763',
                 color: '#fff',
             },
             }}

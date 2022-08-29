@@ -47,7 +47,7 @@ function LoginPage() {
                 <LoginIcon fontSize="large"/>
                 <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth />
                 <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
-                <Link to='/main' style={{ textDecoration: 'none' }}>
+                <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
                     <Button
                         variant='contained'
                         size='large'
@@ -75,19 +75,23 @@ function LoginPage() {
                     <Typography>
                         [TEST] Login as
                     </Typography>
-                    <ButtonGroup variant='outlined' color='primary'>
-                        <Link to='/main' style={{ textDecoration: 'none' }}>
-                        <Button onClick={testAdminLogin}>
-                            Admin
-                        </Button>
+                    <Container sx={{ display: 'flex', gap: '0.2rem' }}>
+                        <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
+                            <Button onClick={testAdminLogin} variant='outlined' color='primary'>
+                                Admin
+                            </Button>
                         </Link>
-                        <Button>
-                            Responder
-                        </Button>
-                        <Button>
-                            User
-                        </Button>
-                    </ButtonGroup>
+                        <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
+                            <Button variant='outlined' color='primary'>
+                                Responder
+                            </Button>
+                        </Link>
+                        <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
+                            <Button variant='outlined' color='primary'>
+                                User
+                            </Button>
+                        </Link>
+                    </Container>
                 </Container>
             </Container>
         </Container>

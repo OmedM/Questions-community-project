@@ -17,14 +17,16 @@ const MainNavBar = () => {
     <AppBar
         position="sticky"
         sx={{
-            backgroundColor: '#eee'
+            backgroundColor: '#eee',
+            width: '100%'
         }}
     >
-      <Container maxWidth="xl" disableGutters
+      <Container disableGutters
         sx={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          width: '100%'
         }}
       >
         <Typography
@@ -48,7 +50,7 @@ const MainNavBar = () => {
             <Link to='/main/user' style={{ textDecoration: 'none', color: 'inherit' }}>
               <Tooltip title="Open User Profile">
                 <IconButton sx={{ p: 0 }}>
-                  <Avatar alt="Admin" src="/static/images/avatar/2.jpg" sx={{ backgroundColor: '#222a43' }} />
+                  <Avatar alt="Admin" src="/static/images/avatar/2.jpg" sx={{ backgroundColor: '#293763' }} />
                 </IconButton>
               </Tooltip>
             </Link>

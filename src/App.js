@@ -13,6 +13,7 @@ import QuestionPage from './components/questions-page.js';
 import Ask from './components/ask-question-page.js';
 import AdminCategories from './components/admin-categories.js';
 import AdminUsers from './components/admin-users.js';
+import Welcome from './components/welcome-page.js'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<LoginPage />}/>
         <Route path='sign-up' element={<SignUpPage />}/>
         <Route path='main' element={<MainPage />}>
+          <Route path='welcome' element={<Welcome />}/>
           <Route path='user' element={<UserPage />}/>
           <Route path='questions' element={<QuestionPage />}/>
           <Route path='ask-question' element={<Ask />}/>

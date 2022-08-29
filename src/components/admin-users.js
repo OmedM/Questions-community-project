@@ -39,13 +39,14 @@ function AdminUsers() {
   }
 
   return (
-    <TableContainer component={Paper} sx={{ padding: 5, width: '93%' }}>
+    <TableContainer sx={{ padding: '2rem 2%', width: '96%' }}>
       <Container
         disableGutters
         sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          width: '100%'
         }}
       >
         <Typography variant='h5'>

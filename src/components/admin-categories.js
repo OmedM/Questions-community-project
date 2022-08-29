@@ -42,8 +42,8 @@ function AdminCategories() {
     return (
         
         <Box
+            maxWidth='large'
             sx={{
-                width: '60%',
                 padding: '5% 20%',
                 display: 'flex',
                 flexDirection: 'column',
@@ -64,7 +64,7 @@ function AdminCategories() {
             <Button
                     variant='contained'
                     size='large'
-                    fullWidth={true}
+                    fullWidth
                     margin="normal"
                     startIcon={<AddIcon />}
                 >
@@ -103,7 +103,7 @@ function AdminCategories() {
                     variant='outlined'
                     color='error'
                     size='large'
-                    fullWidth={true}
+                    fullWidth
                     margin="normal"
                     startIcon={<DeleteIcon />}
                 >
