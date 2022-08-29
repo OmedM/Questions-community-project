@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import { ButtonGroup, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { testActions } from '../redux/test-slice.js';
-import axios from 'axios';
 
 function LoginPage() {
 
@@ -52,7 +51,6 @@ function LoginPage() {
                     <Button
                         variant='contained'
                         size='large'
-                        fullWidth={true}
                     >
                         Login
                     </Button>
