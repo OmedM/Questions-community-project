@@ -8,9 +8,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { upperSidebarItems, lowerSidebarItems } from '../components/sidebar-items.js'
 import { Link } from 'react-router-dom';
-import { Container } from '@mui/system';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 
 function Sidebar() {
     return(
@@ -40,7 +39,7 @@ function Sidebar() {
                     QCP
                 </Typography>
             </Container>
-            <Divider sx={{backgroundColor: '#fff'}}/>
+            <Divider variant="middle" sx={{backgroundColor: '#fff'}}/>
             <List>
             {upperSidebarItems.map((value) => (
                 <ListItem key={value.id} disablePadding>

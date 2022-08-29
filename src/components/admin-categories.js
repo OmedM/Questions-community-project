@@ -25,6 +25,10 @@ function AdminCategories() {
 
     const category = useSelector((state) => state.categories.categories);
 
+    React.useEffect(() => {
+        refresh();
+    }, [])
+
     const refresh = async () => {
         try {
         const res =  await axios.get(getCategories)

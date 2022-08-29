@@ -1,3 +1,4 @@
+import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
@@ -9,10 +10,32 @@ import { ButtonGroup } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { categoriesActions } from '../redux/categories-slice.js';
+import { getCategories } from '../API/api.js';
 
 function Ask() {
+    const [categories, setCategories] = React.useState();
 
-    const categories = useSelector((state) => state.categories.categories);
+    const dispatch = useDispatch();
+
+    const category = useSelector((state) => state.categories.categories);
+
+    React.useEffect(() => {
+        refresh();
+    }, [])
+
+    const refresh = async () => {
+        try {
+        const res =  await axios.get(getCategories)
+            setCategories(res.data.categories)
+            dispatch(categoriesActions.adminUsersList(res.data.categories));
+        }
+        catch (errors) {
+        alert('Something went wrong!')
+        }
+    }
 
     return (
         <Box
@@ -48,7 +71,7 @@ function Ask() {
                 >
                     <option disabled value={100}>Select a category</option>
                     {
-                        categories.map(
+                        category.map(
                             (category) => {
                                 return <option key={category.id} value={category.id}>{category.name}</option>
                             }

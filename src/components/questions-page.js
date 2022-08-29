@@ -5,7 +5,10 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import OutlinedCard from './question-card.js';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { getCategories } from '../API/api.js';
+import { categoriesActions } from '../redux/categories-slice.js'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,18 +46,37 @@ function a11yProps(index) {
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
 
-  const categories = useSelector((state) => state.categories.categories);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const [categories, setCategories] = React.useState();
+
+  const dispatch = useDispatch();
+
+  const category = useSelector((state) => state.categories.categories);
+
+  React.useEffect(() => {
+      refresh();
+  }, [])
+
+  const refresh = async () => {
+      try {
+      const res =  await axios.get(getCategories)
+          setCategories(res.data.categories)
+          dispatch(categoriesActions.adminUsersList(res.data.categories));
+      }
+      catch (errors) {
+      alert('Something went wrong!')
+      }
+  }
 
   return (
     <Box sx={{ width: '100%', marginTop: 0.5 }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="scrollable auto tabs example" scrollButtons="auto" variant='scrollable'>
           {
-            categories.map(
+            category.map(
               (category) => {
                 return (
                   <Tab label={category.name} {...a11yProps(category.id)} key={category.id}/>
@@ -65,7 +87,7 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       {
-        categories.map(
+        category.map(
           (category) => {
             return (
               <TabPanel value={value} index={category.id} key={category.id}></TabPanel>

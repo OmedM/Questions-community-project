@@ -14,14 +14,18 @@ import { useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import { getUsers } from '../API/api.js';
-import { Container } from '@mui/system';
+import Container from '@mui/material/Container';
 import DeleteIcon from '@mui/icons-material/Delete';
 
- function AdminUsers() {
+function AdminUsers() {
   const [users, setUsers] = React.useState([]);
   const rows = useSelector((state) => state.user.users);
 
   const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    submit();
+  }, []);
 
   const submit = async () => {
     try {
@@ -51,9 +55,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
       </Container>
       <Divider />
       <Table aria-label="simple table">
-        <TableHead>
+        <TableHead sx={{ backgroundColor: '#eee' }}>
           <TableRow>
-            <TableCell align="left">#</TableCell>
+            <TableCell align="left">ID</TableCell>
             <TableCell>Username</TableCell>
             <TableCell>Role</TableCell>
             <TableCell>E-mail</TableCell>

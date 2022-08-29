@@ -1,17 +1,32 @@
 import * as React from 'react';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
 
- function UserPage() {
+function UserPage() {
   return (
-    <Typography
-        variant='h4'
-        align='center'
-        sx={{
-          marginTop: 3
-        }}
+    <Container
+      maxWidth='sm'
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '30px 0px',
+        gap: 5
+      }}
     >
-        User page
-    </Typography>
+        <Avatar
+          alt="Admin"
+          src="/static/images/avatar/2.jpg"
+          sx={{
+            backgroundColor: '#222a43',
+            width: '150px',
+            height: '150px',
+            fontSize: 90,
+            marginBottom: 5
+          }}
+        />
+    </Container>
   );
 }
 
