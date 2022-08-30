@@ -75,6 +75,7 @@ function SignUpPage() {
                 justifyContent: 'center',
                 background: 'url(https://149351115.v2.pressablecdn.com/wp-content/uploads/2017/12/SO_3D.png)',
                 backgroundSize: 'cover',
+                backgroundPosition: 'center'
             }}
         >
             <Container

@@ -30,7 +30,7 @@ const MainNavBar = () => {
         }}
       >
         <Typography
-          variant='h5'
+          variant='h6'
           sx={{
             marginLeft: 3,
             color: '#000'

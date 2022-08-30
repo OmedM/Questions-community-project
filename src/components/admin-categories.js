@@ -21,6 +21,7 @@ function AdminCategories() {
         categoryName: '',
         categoryDescription: ''
     });
+    const [selected, setSelected] = React.useState(null);
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -54,15 +55,21 @@ function AdminCategories() {
                   Authorization: 'Bearer ' + token //the token is a variable which holds the token
                 }
                });
+            refresh();
         }
         catch (errors) {
             alert('Something went wrong!');
         }
     }
 
-    const deleteCategories = async () => {
+    const deleteCategory = async () => {
         try {
-            const res = await axios.delete(deleteCategories + '/11');
+            const res = await axios.delete(deleteCategories + `/${selected}`, {
+                headers: {
+                  Authorization: 'Bearer ' + token //the token is a variable which holds the token
+                }
+               });
+               refresh();
         }
         catch (errors) {
             alert('Something went wrong!');
@@ -131,22 +138,23 @@ function AdminCategories() {
                 <NativeSelect
                     defaultValue={100}
                     inputProps={{
-                    name: 'age',
-                    id: 'uncontrolled-native',
+                        name: 'age',
+                        id: 'uncontrolled-native',
                     }}
+                    onChange={(e) => setSelected(e.target.value)}
                 >
                     <option disabled value={100}>Select a category</option>
                     {
                         category.map(
                             (category) => {
-                                return <option key={category.id} value={category.id}>{category.name} ({category.description})</option>
+                                return <option key={category.id} value={category.id}>{category.id}: {category.name} ({category.description})</option>
                             }
                         )
                     }
                 </NativeSelect>
             </FormControl>
                 <Button
-                    onClick={deleteCategories}
+                    onClick={deleteCategory}
                     variant='outlined'
                     color='error'
                     size='large'

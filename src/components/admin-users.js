@@ -16,18 +16,22 @@ import axios from 'axios';
 import { getUsers } from '../API/api.js';
 import Container from '@mui/material/Container';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { deleteUser } from '../API/api.js';
 
 function AdminUsers() {
   const [users, setUsers] = React.useState([]);
+  const [selectedUser, setSelectedUser] = React.useState(null);
+
   const rows = useSelector((state) => state.user.users);
+  const token = useSelector((state) => state.user.currentToken);
 
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    submit();
+    refresh();
   }, []);
 
-  const submit = async () => {
+  const refresh = async () => {
     try {
       const res =  await axios.get(getUsers)
         setUsers(res.data.users)
@@ -37,6 +41,20 @@ function AdminUsers() {
       alert('Something went wrong!')
     }
   }
+
+  const deletingUser = async () => {
+    try {
+        const res = await axios.delete(deleteUser + selectedUser, {
+            headers: {
+              Authorization: 'Bearer ' + token //the token is a variable which holds the token
+            }
+           });
+           refresh();
+    }
+    catch (errors) {
+        alert('Something went wrong!');
+    }
+}
 
   return (
     <TableContainer sx={{ padding: '2rem 2%', width: '96%' }}>
@@ -52,7 +70,7 @@ function AdminUsers() {
         <Typography variant='h5'>
           All QCP users
         </Typography>
-        <Button onClick={submit}>Refresh</Button>
+        <Button onClick={refresh}>Refresh</Button>
       </Container>
       <Divider />
       <Table aria-label="simple table">
@@ -76,7 +94,9 @@ function AdminUsers() {
               <TableCell>{row.role}</TableCell>
               <TableCell>{row.email}</TableCell>
               <TableCell align='right'>
-                <Button color='error'>
+                <Button
+                  color='error'
+                >
                   <DeleteIcon color='error' />
                 </Button>
               </TableCell>

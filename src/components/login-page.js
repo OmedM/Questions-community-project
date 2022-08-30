@@ -39,7 +39,7 @@ function LoginPage() {
     const dispatch = useDispatch();
 
     const testAdminLogin = () => {
-        dispatch(testActions.loginAdmin());
+        setInputs({email: 'admin@example.com', password: 'admin12345'});
     }
 
     return (
@@ -121,23 +121,20 @@ function LoginPage() {
                     <Typography>
                         [TEST] Login as
                     </Typography>
-                    <Container disableGutters sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.1rem' }}>
-                        <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
-                            <Button variant='outlined' color='primary'>
-                                Admin
-                            </Button>
-                        </Link>
-                        <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
-                            <Button variant='outlined' color='primary'>
-                                Responder
-                            </Button>
-                        </Link>
-                        <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
-                            <Button variant='outlined' color='primary'>
-                                User
-                            </Button>
-                        </Link>
-                    </Container>
+                    <ButtonGroup >
+                        <Button onClick={testAdminLogin} variant='outlined' color='primary'>
+                            Admin
+                        </Button>
+                        <Button variant='outlined' color='primary'>
+                            Responder
+                        </Button>
+                        <Button variant='outlined' color='primary'>
+                            User
+                        </Button>
+                    </ButtonGroup>
+                        <Typography variant='subtitle1'>
+                            Then click on Login
+                        </Typography>
                 </Container>
             </Container>
         </Container>
