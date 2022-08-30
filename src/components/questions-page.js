@@ -66,7 +66,7 @@ export default function BasicTabs() {
   const getCategoriesData = async () => {
       try {
       const res =  await axios.get(getCategories)
-          dispatch(categoriesActions.adminUsersList(res.data.categories));
+          dispatch(categoriesActions.adminCategoriesList(res.data.categories));
       }
       catch (errors) {
       alert('Something went wrong!')

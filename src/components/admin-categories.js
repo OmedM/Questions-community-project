@@ -17,14 +17,21 @@ import { addCategories } from '../API/api.js';
 import { deleteCategories } from '../API/api.js';
 
 function AdminCategories() {
-    const [newCategory, setNewCategory] = React.useState({
+    const [inputs, setInputs] = React.useState({
         categoryName: '',
         categoryDescription: ''
     });
 
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+    }
+
     const dispatch = useDispatch();
 
     const category = useSelector((state) => state.categories.categories);
+    const token = useSelector((state) => state.user.currentToken);
 
     React.useEffect(() => {
         refresh();
@@ -33,7 +40,7 @@ function AdminCategories() {
     const refresh = async () => {
         try {
             const res =  await axios.get(getCategories)
-                dispatch(categoriesActions.adminUsersList(res.data.categories));
+                dispatch(categoriesActions.adminCategoriesList(res.data.categories));
         }
         catch (errors) {
             alert('Something went wrong!');
@@ -42,8 +49,11 @@ function AdminCategories() {
 
     const post = async () => {
         try {
-            const res = await axios.post(addCategories, { "name": "test", "description": "test test" });
-            console.log(res)
+            const res = await axios.post(addCategories, { "name": inputs.categoryName, "description": inputs.categoryDescription }, {
+                headers: {
+                  Authorization: 'Bearer ' + token //the token is a variable which holds the token
+                }
+               });
         }
         catch (errors) {
             alert('Something went wrong!');
@@ -79,8 +89,23 @@ function AdminCategories() {
             >
                 Categories
             </Typography>
-            <TextField id="outlined-basic" label="Category name" variant="outlined" fullWidth margin='normal'/>
-            <TextField id="outlined-basic" label="Category description" variant="outlined" fullWidth margin='normal'/>
+            <TextField
+                label="Category name"
+                variant="outlined"
+                fullWidth
+                name='categoryName'
+                value={inputs.categoryName || ''}
+                onChange={handleChange}
+            />
+            <TextField
+                label="Category description"
+                variant="outlined"
+                margin='normal'
+                fullWidth
+                name='categoryDescription'
+                value={inputs.categoryDescription || ''}
+                onChange={handleChange}
+            />
             <Button
                 onClick={post}
                 variant='contained'
@@ -114,7 +139,7 @@ function AdminCategories() {
                     {
                         category.map(
                             (category) => {
-                                return <option key={category.id} value={category.id}>{category.name}</option>
+                                return <option key={category.id} value={category.id}>{category.name} ({category.description})</option>
                             }
                         )
                     }

@@ -5,22 +5,22 @@ import LoginIcon from '@mui/icons-material/Login';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { ButtonGroup, Typography } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { testActions } from '../redux/test-slice.js';
 import axios from 'axios';
-import { postUserLogin } from '../API/api.js'
+import { postUserLogin } from '../API/api.js';
+import { userActions } from '../redux/user-slice.js';
 
 function LoginPage() {
     const [inputs, setInputs] = React.useState({
         email: '',
         password: ''
     });
-
+    
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
-        console.log(inputs)
     }
 
     const handleSubmit = async () => {
@@ -29,7 +29,7 @@ function LoginPage() {
                 "email": inputs.email,
                 "password": inputs.password
             })
-            console.log(res.data)
+            dispatch(userActions.currentUser(res.data))
         }
         catch (errors) {
             alert('Something went wrong!');
@@ -74,7 +74,7 @@ function LoginPage() {
             >
                 <LoginIcon fontSize="large"/>
                 <TextField
-                    id="outlined-basic"
+                    id="outlined-basicE"
                     label="Username"
                     variant="outlined"
                     fullWidth
@@ -83,9 +83,10 @@ function LoginPage() {
                     onChange={handleChange}
                 />
                 <TextField
-                    id="outlined-basic"
+                    id="outlined-basicP"
                     label="Password"
                     variant="outlined"
+                    type='password'
                     fullWidth
                     name='password'
                     value={inputs.password || ''}

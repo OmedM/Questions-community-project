@@ -30,7 +30,7 @@ function Ask() {
         try {
         const res =  await axios.get(getCategories)
             setCategories(res.data.categories)
-            dispatch(categoriesActions.adminUsersList(res.data.categories));
+            dispatch(categoriesActions.adminCategoriesList(res.data.categories));
         }
         catch (errors) {
         alert('Something went wrong!')

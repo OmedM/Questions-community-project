@@ -8,7 +8,7 @@ const roleSlice = createSlice({
     },
     reducers: {
         roles(state, action) {
-            state.roles = action.payload
+            state.roles = action.payload;
         }
     }
 });

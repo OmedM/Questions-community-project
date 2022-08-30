@@ -4,23 +4,16 @@ import axios from 'axios';
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        users: []
+        users: [],
+        currentToken: []
     },
     reducers: {
-        addUser(state, action) {
-            const API = 'https://api.qa-ranj.interns.dev.krd/v1/users/register';
-
-            axios.post(API, {
-                "role": "responder",
-                "firstName": "aaa",
-                "lastName": "bbb",
-                "displayName": "aaabbb",
-                "password": "aaabbb12345",
-                "email": "ab@example.com"
-            }).catch(() => { alert('Some thing goes wrong!') })
+        currentUser(state, action) {
+            state.currentToken = action.payload.access;
+            console.log(state.currentToken)
         },
         adminUsersList(state, action) {
-            state.users = action.payload
+            state.users = action.payload;
         }
     }
 });
