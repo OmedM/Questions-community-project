@@ -13,9 +13,10 @@ import axios from 'axios';
 import { categoriesActions } from '../redux/categories-slice.js';
 import { getCategories } from '../API/api.js';
 import { useSelector } from 'react-redux';
+import { addCategories } from '../API/api.js';
+import { deleteCategories } from '../API/api.js';
 
 function AdminCategories() {
-    const [categories, setCategories] = React.useState();
     const [newCategory, setNewCategory] = React.useState({
         categoryName: '',
         categoryDescription: ''
@@ -31,14 +32,33 @@ function AdminCategories() {
 
     const refresh = async () => {
         try {
-        const res =  await axios.get(getCategories)
-            setCategories(res.data.categories)
-            dispatch(categoriesActions.adminUsersList(res.data.categories));
+            const res =  await axios.get(getCategories)
+                dispatch(categoriesActions.adminUsersList(res.data.categories));
         }
         catch (errors) {
-        alert('Something went wrong!')
+            alert('Something went wrong!');
         }
     }
+
+    const post = async () => {
+        try {
+            const res = await axios.post(addCategories, { "name": "test", "description": "test test" });
+            console.log(res)
+        }
+        catch (errors) {
+            alert('Something went wrong!');
+        }
+    }
+
+    const deleteCategories = async () => {
+        try {
+            const res = await axios.delete(deleteCategories + '/11');
+        }
+        catch (errors) {
+            alert('Something went wrong!');
+        }
+    }
+
     return (
         
         <Box
@@ -62,15 +82,16 @@ function AdminCategories() {
             <TextField id="outlined-basic" label="Category name" variant="outlined" fullWidth margin='normal'/>
             <TextField id="outlined-basic" label="Category description" variant="outlined" fullWidth margin='normal'/>
             <Button
-                    variant='contained'
-                    size='large'
-                    fullWidth
-                    margin="normal"
-                    startIcon={<AddIcon />}
-                >
-                    Add
-                </Button>
-                <Typography
+                onClick={post}
+                variant='contained'
+                size='large'
+                fullWidth
+                margin="normal"
+                startIcon={<AddIcon />}
+            >
+                Add
+            </Button>
+            <Typography
                 variant='h4'
                 sx={{
                     marginTop: 5
@@ -100,6 +121,7 @@ function AdminCategories() {
                 </NativeSelect>
             </FormControl>
                 <Button
+                    onClick={deleteCategories}
                     variant='outlined'
                     color='error'
                     size='large'
