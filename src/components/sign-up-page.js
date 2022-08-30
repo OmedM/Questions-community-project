@@ -10,10 +10,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { getRoles } from '../API/api.js';
 import { roleActions } from '../redux/role-slice';
+import { postUser } from '../API/api.js';
 
 
 function SignUpPage() {
-    const [roles, setRoles] = React.useState();
     const [newUser, setNewUser] = React.useState({
         role: '',
         firstName: '',
@@ -29,10 +29,6 @@ function SignUpPage() {
         setNewUser(values => ({...values, [name]: value}))
     }
 
-    const submit = () => {
-        
-    }
-
     const dispatch = useDispatch();
 
     const role = useSelector((state) => state.roles.roles);
@@ -44,11 +40,27 @@ function SignUpPage() {
     const getData = async () => {
         try {
         const res =  await axios.get(getRoles)
-            setRoles(res.data.roles)
             dispatch(roleActions.roles(res.data.roles));
         }
         catch (errors) {
         alert('Something went wrong!')
+        }
+    }
+
+    const addUser = async () => {
+        try {
+            const res = await axios.post(addUser, {
+                "role": "qa-engineer",
+                "firstName": "aaaa",
+                "lastName": "bbbb",
+                "displayName": "aaaabbbb",
+                "password": "aaabbb12345",
+                "email": "aaaabbbb@example.com"
+            })
+            console.log(res)
+        }
+        catch (errors) {
+            alert('Something went wrong!');
         }
     }
 
@@ -91,10 +103,10 @@ function SignUpPage() {
                         gap: 2
                     }}
                 >
-                    <TextField onChange={handleChange} id="outlined-basic" label="First name" variant="outlined" fullWidth />
-                    <TextField onChange={handleChange} id="outlined-basic" label="Last name" variant="outlined" fullWidth />
+                    <TextField onChange={handleChange} id="outlined-basicF" label="First name" variant="outlined" fullWidth />
+                    <TextField onChange={handleChange} id="outlined-basicL" label="Last name" variant="outlined" fullWidth />
                 </Container>
-                <TextField onChange={handleChange} id="outlined-basic" label="Display name" variant="outlined" fullWidth />
+                <TextField onChange={handleChange} id="outlined-basicD" label="Display name" variant="outlined" fullWidth />
                 <NativeSelect
                     onChange={handleChange}
                     fullWidth
@@ -119,8 +131,8 @@ function SignUpPage() {
                             )
                         }
                 </NativeSelect>
-                <TextField onChange={handleChange} id="outlined-basic" label="E-mail" variant="outlined" fullWidth />
-                <TextField onChange={handleChange} id="outlined-basic" label="Password" type='password' variant="outlined" fullWidth />
+                <TextField onChange={handleChange} id="outlined-basicE" label="E-mail" variant="outlined" fullWidth />
+                <TextField onChange={handleChange} id="outlined-basicP" label="Password" type='password' variant="outlined" fullWidth />
                 <TextField id="outlined-basic" label="Re-type your password" type='password' variant="outlined" fullWidth />
                 <Container
                     sx={{
@@ -131,7 +143,7 @@ function SignUpPage() {
                 >
                     <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
                         <Button
-                            onClick={submit}
+                            onClick={addUser}
                             variant='contained'
                             size='large'
                             fullWidth={true}

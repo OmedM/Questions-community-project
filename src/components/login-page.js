@@ -27,6 +27,7 @@ function LoginPage() {
                 justifyContent: 'center',
                 background: 'url(https://149351115.v2.pressablecdn.com/wp-content/uploads/2017/12/SO_3D.png)',
                 backgroundSize: 'cover',
+                backgroundPosition: 'center'
             }}
         >
             <Container
@@ -75,7 +76,7 @@ function LoginPage() {
                     <Typography>
                         [TEST] Login as
                     </Typography>
-                    <Container sx={{ display: 'flex', gap: '0.2rem' }}>
+                    <Container sx={{ display: 'flex', gap: '0.1rem' }}>
                         <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
                             <Button onClick={testAdminLogin} variant='outlined' color='primary'>
                                 Admin

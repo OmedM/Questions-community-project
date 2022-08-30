@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import Container from "@mui/material/Container";
-import icon from './icons8-chat.gif'
+import icon from '../figures/icons8-chat.gif';
 
 
 export default function Welcome() {
