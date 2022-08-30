@@ -19,7 +19,7 @@ function UserPage() {
           alt="Admin"
           src="/static/images/avatar/2.jpg"
           sx={{
-            backgroundColor: '#222a43',
+            backgroundColor: '#293763',
             width: '150px',
             height: '150px',
             fontSize: 90,

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Container from "@mui/material/Container";
 import LoginIcon from '@mui/icons-material/Login';
@@ -6,8 +7,34 @@ import Button from "@mui/material/Button";
 import { ButtonGroup, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { testActions } from '../redux/test-slice.js';
+import axios from 'axios';
+import { postUserLogin } from '../API/api.js'
 
 function LoginPage() {
+    const [inputs, setInputs] = React.useState({
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+        console.log(inputs)
+    }
+
+    const handleSubmit = async () => {
+        try {
+            const res = await axios.post(postUserLogin, {
+                "email": inputs.email,
+                "password": inputs.password
+            })
+            console.log(res.data)
+        }
+        catch (errors) {
+            alert('Something went wrong!');
+        }
+    }
 
     const dispatch = useDispatch();
 
@@ -46,12 +73,29 @@ function LoginPage() {
                 }}
             >
                 <LoginIcon fontSize="large"/>
-                <TextField id="outlined-basic" label="Username" variant="outlined" fullWidth />
-                <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth />
+                <TextField
+                    id="outlined-basic"
+                    label="Username"
+                    variant="outlined"
+                    fullWidth
+                    name='email'
+                    value={inputs.email || ''}
+                    onChange={handleChange}
+                />
+                <TextField
+                    id="outlined-basic"
+                    label="Password"
+                    variant="outlined"
+                    fullWidth
+                    name='password'
+                    value={inputs.password || ''}
+                    onChange={handleChange}
+                />
                 <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
                     <Button
                         variant='contained'
                         size='large'
+                        onClick={handleSubmit}
                     >
                         Login
                     </Button>
@@ -76,9 +120,9 @@ function LoginPage() {
                     <Typography>
                         [TEST] Login as
                     </Typography>
-                    <Container sx={{ display: 'flex', gap: '0.1rem' }}>
+                    <Container disableGutters sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.1rem' }}>
                         <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
-                            <Button onClick={testAdminLogin} variant='outlined' color='primary'>
+                            <Button variant='outlined' color='primary'>
                                 Admin
                             </Button>
                         </Link>

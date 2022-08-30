@@ -3,6 +3,7 @@ import Sidebar from "./sidebar.js";
 import MainNavBar from "./main-navbar.js";
 
 function MainPage() {
+    
     return (
         <>
             <Sidebar />

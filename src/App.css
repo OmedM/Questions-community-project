@@ -1,3 +1,31 @@
 body {
     margin: 0;
 }
+
+.sidebar {
+    position: absolute;
+    clip-path: circle(10px at 0% -10%);
+    -webkit-clip-path: circle(10px at -10% -10%);
+    transition: all 0.4s ease-out;
+}
+
+.sidebar.open {
+    clip-path: circle(150vh at 50% 50%);
+    -webkit-clip-path: circle(150vh at 50% 50%);
+    transition: all 0.4s ease-out;
+}
+
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        position: absolute;
+        clip-path: circle(10px at 0% -10%);
+        -webkit-clip-path: circle(10px at -10% -10%);
+        transition: all 0.4s ease-out;
+    }
+
+    .sidebar.open {
+        clip-path: circle(150vh at 50% 50%);
+        -webkit-clip-path: circle(150vh at 50% 50%);
+        transition: all 0.4s ease-out;
+    }
+}

@@ -13,7 +13,7 @@ import QuestionPage from './components/questions-page.js';
 import Ask from './components/ask-question-page.js';
 import AdminCategories from './components/admin-categories.js';
 import AdminUsers from './components/admin-users.js';
-import Welcome from './components/welcome-page.js'
+import Welcome from './components/welcome-page.js';
 
 function App() {
   return (

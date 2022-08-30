@@ -49,7 +49,7 @@ function SignUpPage() {
 
     const addUser = async () => {
         try {
-            const res = await axios.post(addUser, {
+            const res = await axios.post(postUser, {
                 "role": "qa-engineer",
                 "firstName": "aaaa",
                 "lastName": "bbbb",
@@ -57,7 +57,6 @@ function SignUpPage() {
                 "password": "aaabbb12345",
                 "email": "aaaabbbb@example.com"
             })
-            console.log(res)
         }
         catch (errors) {
             alert('Something went wrong!');
@@ -141,7 +140,7 @@ function SignUpPage() {
                         justifyContent: 'center',
                     }}
                 >
-                    <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
+                    {/* <Link to='/main/welcome' style={{ textDecoration: 'none' }}> */}
                         <Button
                             onClick={addUser}
                             variant='contained'
@@ -150,7 +149,7 @@ function SignUpPage() {
                         >
                             Sign up
                         </Button>
-                    </Link>
+                    {/* </Link> */}
                 </Container>
                 <Link to='/' style={{ textDecoration: 'none' }}>
                     <Typography variant='overline' fontSize={13} color='primary'>
