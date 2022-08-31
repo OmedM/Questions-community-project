@@ -19,7 +19,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { deleteUser } from '../API/api.js';
 
 function AdminUsers() {
-  const [users, setUsers] = React.useState([]);
   const [selectedUser, setSelectedUser] = React.useState(null);
 
   const rows = useSelector((state) => state.user.users);
@@ -34,7 +33,6 @@ function AdminUsers() {
   const refresh = async () => {
     try {
       const res =  await axios.get(getUsers)
-        setUsers(res.data.users)
         dispatch(userActions.adminUsersList(res.data.users));
     }
     catch (errors) {

@@ -48,7 +48,6 @@ function Ask() {
                 }
             }
             );
-        console.log(res)
     }
 
     const refresh = async () => {
