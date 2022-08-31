@@ -3,7 +3,9 @@ export const postUser = 'https://api.qa-ranj.interns.dev.krd/v1/users/register';
 export const deleteUser = 'https://api.qa-ranj.interns.dev.krd/v1/users/';
 
 export const getRoles = 'https://api.qa-ranj.interns.dev.krd/v1/roles';
+
 export const getQuestions = 'https://api.qa-ranj.interns.dev.krd/v1/questions';
+export const postQuestion = 'https://api.qa-ranj.interns.dev.krd/v1/questions';
 
 export const getCategories = 'https://api.qa-ranj.interns.dev.krd/v1/categories';
 export const addCategories = 'https://api.qa-ranj.interns.dev.krd/v1/categories';

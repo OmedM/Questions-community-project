@@ -14,22 +14,46 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { categoriesActions } from '../redux/categories-slice.js';
 import { getCategories } from '../API/api.js';
+import { postQuestion } from '../API/api.js';
 
 function Ask() {
-    const [categories, setCategories] = React.useState();
+    const [inputs, setInputs] = React.useState({
+        title: '',
+        question: '',
+        category: ''
+    });
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({...values, [name]: value}))
+        console.log(inputs)
+    }
 
     const dispatch = useDispatch();
 
     const category = useSelector((state) => state.categories.categories);
+    const token = useSelector((state) => state.user.currentToken)
 
     React.useEffect(() => {
         refresh();
     }, [])
 
+    const addQuestion = async () => {
+        const res = await axios.post(postQuestion, 
+            { "question": "string", "description": "string","categoryId": 1 },
+            {
+                headers: {
+                  Authorization: 'Bearer ' + token //the token is a variable which holds the token
+                }
+            }
+            );
+        console.log(res)
+    }
+
     const refresh = async () => {
         try {
         const res =  await axios.get(getCategories)
-            setCategories(res.data.categories)
             dispatch(categoriesActions.adminCategoriesList(res.data.categories));
         }
         catch (errors) {
@@ -56,8 +80,25 @@ function Ask() {
             >
                 Question Form
             </Typography>
-            <TextField id="outlined-basic" label="Title" variant="outlined" fullWidth margin='normal'/>
-            <TextField multiline={true} rows='8' id="outlined-basic" label="Question" variant="outlined" fullWidth margin='normal'/>
+            <TextField
+                onChange={handleChange}
+                name='title'
+                value={inputs.title || ''}
+                label="Title"
+                variant="outlined"
+                fullWidth
+                margin='normal'
+            />
+            <TextField
+                onChange={handleChange} 
+                name='question'
+                value={inputs.question || ''}
+                multiline={true}
+                rows='8'
+                label="Question"
+                variant="outlined"
+                fullWidth
+                margin='normal'/>
             <FormControl fullWidth margin='normal'>
                 <InputLabel variant="standard" htmlFor="uncontrolled-native">
                     Category
@@ -101,6 +142,7 @@ function Ask() {
                     fullWidth={true}
                     margin="normal"
                     startIcon={<DoneIcon />}
+                    onClick={addQuestion}
                 >
                     Finish
                 </Button>

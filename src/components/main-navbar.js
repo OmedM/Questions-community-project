@@ -9,35 +9,51 @@ import Tooltip from '@mui/material/Tooltip';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { sidebarActions } from '../redux/sidebar-slice.js'
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import { useDispatch, useSelector } from 'react-redux';
 
 const MainNavBar = () => {
   const location = useLocation();
 
+  const isOpen = useSelector((state) => state.sidebar.sidebar);
+
+  const dispatch = useDispatch();
+
+  const toggle = () => {
+    dispatch(sidebarActions.toggle())
+  }
+
   return (
     <AppBar
         position="sticky"
+        disableGutters
         sx={{
             backgroundColor: '#eee',
             width: '100%'
         }}
     >
-      <Container disableGutters
+      <Container
+        maxWidth
         sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          width: '100%'
+          padding: 0
         }}
       >
-        <Typography
-          variant='h6'
-          sx={{
-            marginLeft: 3,
-            color: '#000'
-          }}
-        >
-          {location.pathname.charAt(6).toUpperCase() + location.pathname.slice(7)}
-        </Typography>
+        <Container sx={{ display: 'flex', alignItems: 'center' }}>
+          <KeyboardDoubleArrowLeftIcon className={`${!isOpen && 'flip'}`} onClick={toggle} fontSize='large' sx={{ color: '#000' }}/>
+          <Typography
+            variant='h6'
+            sx={{
+              marginLeft: 3,
+              color: '#000'
+            }}
+          >
+            {location.pathname.charAt(11).toUpperCase() + location.pathname.slice(12)}
+          </Typography>
+        </Container>
         <Toolbar 
             disableGutters
             sx={{

@@ -92,7 +92,7 @@ function LoginPage() {
                     value={inputs.password || ''}
                     onChange={handleChange}
                 />
-                <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
+                <Link to='/user/main/welcome' style={{ textDecoration: 'none' }}>
                     <Button
                         variant='contained'
                         size='large'

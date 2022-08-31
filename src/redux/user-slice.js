@@ -9,7 +9,8 @@ const userSlice = createSlice({
     },
     reducers: {
         currentUser(state, action) {
-            state.currentToken = action.payload.access;
+            window.localStorage.setItem('token', action.payload.access);
+            state.currentToken = window.localStorage.getItem('token')
             console.log(state.currentToken)
         },
         adminUsersList(state, action) {

@@ -14,19 +14,22 @@ import Ask from './components/ask-question-page.js';
 import AdminCategories from './components/admin-categories.js';
 import AdminUsers from './components/admin-users.js';
 import Welcome from './components/welcome-page.js';
+import Auth from './components/auth.js';
 
 function App() {
   return (
       <Routes>
         <Route path='/' element={<LoginPage />}/>
         <Route path='sign-up' element={<SignUpPage />}/>
-        <Route path='main' element={<MainPage />}>
-          <Route path='welcome' element={<Welcome />}/>
-          <Route path='user' element={<UserPage />}/>
-          <Route path='questions' element={<QuestionPage />}/>
-          <Route path='ask-question' element={<Ask />}/>
-          <Route path='admin-users' element={<AdminUsers />}/>
-          <Route path='admin-categories' element={<AdminCategories />}/>
+        <Route path='user' element={<Auth />}>
+          <Route path='main' element={<MainPage />}>
+            <Route path='welcome' element={<Welcome />}/>
+            <Route path='user' element={<UserPage />}/>
+            <Route path='questions' element={<QuestionPage />}/>
+            <Route path='ask-question' element={<Ask />}/>
+            <Route path='admin-users' element={<AdminUsers />}/>
+            <Route path='admin-categories' element={<AdminCategories />}/>
+          </Route>
         </Route>
         <Route path='*' element={<ErrorPage />}/>
       </Routes>
