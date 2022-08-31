@@ -107,7 +107,7 @@ export default function BasicTabs() {
                   question.map(
                     (question) => {
                       return (
-                        <p key={question.categoryId}>{question.id + question.question}</p>
+                        <OutlinedCard key={question.id} question={question} />
                       )
                     }
                   )

@@ -20,14 +20,14 @@ function Ask() {
     const [inputs, setInputs] = React.useState({
         title: '',
         question: '',
-        category: ''
+        category: '100'
     });
+    const [selected, setSelected] = React.useState()
 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
-        console.log(inputs)
     }
 
     const dispatch = useDispatch();
@@ -41,10 +41,10 @@ function Ask() {
 
     const addQuestion = async () => {
         const res = await axios.post(postQuestion, 
-            { "question": "string", "description": "string","categoryId": 1 },
+            { "question": inputs.title, "description": inputs.question,"categoryId": inputs.category },
             {
                 headers: {
-                  Authorization: 'Bearer ' + token //the token is a variable which holds the token
+                  Authorization: 'Bearer ' + token
                 }
             }
             );
@@ -104,11 +104,11 @@ function Ask() {
                     Category
                 </InputLabel>
                 <NativeSelect
-                    defaultValue={100}
                     inputProps={{
-                    name: 'age',
-                    id: 'uncontrolled-native',
+                        name: 'category',
                     }}
+                    value={inputs.category || ''}
+                    onChange={handleChange}
                 >
                     <option disabled value={100}>Select a category</option>
                     {
