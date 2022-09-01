@@ -5,7 +5,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { ButtonGroup, Typography } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import { postUserLogin } from '../API/api.js';
 import { userActions } from '../redux/user-slice.js';

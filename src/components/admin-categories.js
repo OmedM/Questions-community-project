@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import NativeSelect from '@mui/material/NativeSelect';
@@ -135,7 +136,18 @@ function AdminCategories() {
                 <InputLabel variant="standard" htmlFor="uncontrolled-native">
                     Category
                 </InputLabel>
+                <Container
+                    disableGutters
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: 1,
+                        paddingTop: 1.5,
+                    }}
+                >
                 <NativeSelect
+                    fullWidth
                     defaultValue={100}
                     inputProps={{
                         name: 'age',
@@ -152,6 +164,8 @@ function AdminCategories() {
                         )
                     }
                 </NativeSelect>
+                <Button onClick={refresh}>Refresh</Button>
+                </Container>
             </FormControl>
                 <Button
                     onClick={deleteCategory}
@@ -164,7 +178,6 @@ function AdminCategories() {
                 >
                     Delete
                 </Button>
-                <Button onClick={refresh}>Refresh</Button>
         </Box>
     )
 }
