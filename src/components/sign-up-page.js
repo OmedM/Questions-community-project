@@ -27,7 +27,6 @@ function SignUpPage() {
         const name = event.target.name;
         const value = event.target.value;
         setNewUser(values => ({...values, [name]: value}))
-        console.log(newUser)
     }
 
     const dispatch = useDispatch();

@@ -44,7 +44,7 @@ function AdminUsers() {
     try {
         const res = await axios.delete(deleteUser + selectedUser, {
             headers: {
-              Authorization: 'Bearer ' + token //the token is a variable which holds the token
+              Authorization: 'Bearer ' + token
             }
            });
            refresh();

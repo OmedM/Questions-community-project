@@ -20,7 +20,7 @@ export default function Welcome() {
                 Welcome to QCP
             </Typography>
             <img style={{ width: '100%' }} src="https://tricomb2b.com/sites/default/files/paragraph/image/GettyImages-1291089965.jpg" />
-            <Typography>
+            <Typography align="justify" paddingX={8}>
                 QCP (Question Community Project) is a Q&A community among a department's employees. Anyone on a team can create an account and select their role to participate in a problem-solving environment. With QCP, a team can decide what category they need, start the action to solve their bugs and problems and communicate more precisely and efficiently.
             </Typography>
             <Container
