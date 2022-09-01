@@ -63,7 +63,7 @@ const MainNavBar = () => {
             }}
         >
           <Box sx={{ flexGrow: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Link to='/main/user' style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link to='/user/main/user' style={{ textDecoration: 'none', color: 'inherit' }}>
               <Tooltip title="Open User Profile">
                 <IconButton sx={{ p: 0 }}>
                   <Avatar alt="Admin" src="/static/images/avatar/2.jpg" sx={{ backgroundColor: '#293763' }} />

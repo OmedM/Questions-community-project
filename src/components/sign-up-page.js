@@ -143,7 +143,7 @@ function SignUpPage() {
                         justifyContent: 'center',
                     }}
                 >
-                    {/* <Link to='/main/welcome' style={{ textDecoration: 'none' }}> */}
+                    {/* <Link to='/user/main/welcome' style={{ textDecoration: 'none' }}> */}
                         <Button
                             onClick={addUser}
                             variant='contained'

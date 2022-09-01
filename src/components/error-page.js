@@ -23,7 +23,7 @@ export default function ErrorPage() {
             >
                 Error! this page doesn't belong to this universe
             </Typography>
-            <Link to='/main/welcome' style={{ textDecoration: 'none' }}>
+            <Link to='/user/main/welcome' style={{ textDecoration: 'none' }}>
                 <Button variant="outlined">
                     Back to home universe
                 </Button>
