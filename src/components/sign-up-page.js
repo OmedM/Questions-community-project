@@ -27,6 +27,7 @@ function SignUpPage() {
         const name = event.target.name;
         const value = event.target.value;
         setNewUser(values => ({...values, [name]: value}))
+        console.log(newUser)
     }
 
     const dispatch = useDispatch();
@@ -50,12 +51,12 @@ function SignUpPage() {
     const addUser = async () => {
         try {
             const res = await axios.post(postUser, {
-                "role": "qa-engineer",
-                "firstName": "aaaa",
-                "lastName": "bbbb",
-                "displayName": "aaaabbbb",
-                "password": "aaabbb12345",
-                "email": "aaaabbbb@example.com"
+                "role": newUser.role,
+                "firstName": newUser.firstName,
+                "lastName": newUser.lastName,
+                "displayName": newUser.displayName,
+                "password": newUser.password,
+                "email": newUser.email
             })
         }
         catch (errors) {
@@ -103,18 +104,17 @@ function SignUpPage() {
                         gap: 2
                     }}
                 >
-                    <TextField onChange={handleChange} id="outlined-basicF" label="First name" variant="outlined" fullWidth />
-                    <TextField onChange={handleChange} id="outlined-basicL" label="Last name" variant="outlined" fullWidth />
+                    <TextField onChange={handleChange} name='firstName' label="First name" variant="outlined" fullWidth />
+                    <TextField onChange={handleChange} name='lastName' label="Last name" variant="outlined" fullWidth />
                 </Container>
-                <TextField onChange={handleChange} id="outlined-basicD" label="Display name" variant="outlined" fullWidth />
+                <TextField onChange={handleChange} name='displayName' label="Display name" variant="outlined" fullWidth />
                 <NativeSelect
                     onChange={handleChange}
                     fullWidth
                     variant='standard'
                     defaultValue={100}
                     inputProps={{
-                        name: 'age',
-                        id: 'uncontrolled-native',
+                        name: 'role',
                     }}
                 >
                         <option disabled value={100}>Select a role</option>
@@ -123,16 +123,16 @@ function SignUpPage() {
                                 (role) => {
                                     {
                                         if(role.name === 'admin') {
-                                            return <option disabled value={role.id} key={role.id}>{role.name}</option>
+                                            return <option disabled value={role.name} key={role.id}>{role.name}</option>
                                         }
                                     }
-                                    return <option value={role.id} key={role.id}>{role.name}</option>
+                                    return <option value={role.name} key={role.id}>{role.name}</option>
                                 }
                             )
                         }
                 </NativeSelect>
-                <TextField onChange={handleChange} id="outlined-basicE" label="E-mail" variant="outlined" fullWidth />
-                <TextField onChange={handleChange} id="outlined-basicP" label="Password" type='password' variant="outlined" fullWidth />
+                <TextField onChange={handleChange} name='email' label="E-mail" variant="outlined" fullWidth />
+                <TextField onChange={handleChange} name='password' label="Password" type='password' variant="outlined" fullWidth />
                 <TextField id="outlined-basic" label="Re-type your password" type='password' variant="outlined" fullWidth />
                 <Container
                     sx={{

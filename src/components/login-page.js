@@ -42,6 +42,14 @@ function LoginPage() {
         setInputs({email: 'admin@example.com', password: 'admin12345'});
     }
 
+    const testResponderLogin = () => {
+        setInputs({email: 'testsf@example.com', password: 'testsf1234'});
+    }
+
+    const testUserLogin = () => {
+        setInputs({email: 'testqa@example.com', password: 'testqa1234'});
+    }
+
     return (
         <Container
             disableGutters
@@ -125,10 +133,10 @@ function LoginPage() {
                         <Button onClick={testAdminLogin} variant='outlined' color='primary'>
                             Admin
                         </Button>
-                        <Button variant='outlined' color='primary'>
+                        <Button onClick={testResponderLogin} variant='outlined' color='primary'>
                             Responder
                         </Button>
-                        <Button variant='outlined' color='primary'>
+                        <Button onClick={testUserLogin} variant='outlined' color='primary'>
                             User
                         </Button>
                     </ButtonGroup>
