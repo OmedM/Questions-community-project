@@ -11,7 +11,6 @@ const userSlice = createSlice({
         currentUser(state, action) {
             window.localStorage.setItem('token', action.payload.access);
             state.currentToken = window.localStorage.getItem('token')
-            console.log(state.currentToken)
         },
         adminUsersList(state, action) {
             state.users = action.payload;

@@ -57,6 +57,7 @@ function SignUpPage() {
                 "password": newUser.password,
                 "email": newUser.email
             })
+            alert('Done ;)')
         }
         catch (errors) {
             alert('Something went wrong!');
@@ -134,6 +135,8 @@ function SignUpPage() {
                 <TextField onChange={handleChange} name='password' label="Password" type='password' variant="outlined" fullWidth />
                 <TextField id="outlined-basic" label="Re-type your password" type='password' variant="outlined" fullWidth />
                 <Container
+                    fullWidth
+                    disableGutters
                     sx={{
                         display: 'flex',
                         alignItems: 'center',
@@ -145,7 +148,8 @@ function SignUpPage() {
                             onClick={addUser}
                             variant='contained'
                             size='large'
-                            fullWidth={true}
+                            fullWidth
+                            disableGutters
                         >
                             Sign up
                         </Button>
