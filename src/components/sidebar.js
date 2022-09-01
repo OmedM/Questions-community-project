@@ -10,8 +10,6 @@ import { upperSidebarItems, lowerSidebarItems } from '../components/sidebar-item
 import { Link } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import { sidebarActions } from '../redux/sidebar-slice.js';
-import { useSelector } from 'react-redux';
 
 function Sidebar() {
     return(
